@@ -6,6 +6,9 @@ class Sign_up extends CI_Controller {
 /** VIEW */
 	// 리스트 페이지
 	public function index(){
+		$this->load->model('model_users');
+		$items = $this->model_users->reads();
+		print_r($items);
 		$this->load->view('sign_up/index'); //view로딩한다
 	}
 
