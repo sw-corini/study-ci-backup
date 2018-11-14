@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+   RewriteBase /
+   RewriteCond $1 !^(index\.php|assets|pub|robots\.txt|info\.php)
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule ^(.*)$ /index.php/$1 [L]
+
+   #SetEnvIf Host kiwoom.tudal.in$ CI_ENV=production
+   #SetEnvIf Host dev1.tudal.in$ CI_ENV=testing
+   #SetEnvIf Host sbcnvdi.iptime.org:8803$ CI_ENV=development
+#    SetEnvIf Host localhost:8003$ CI_ENV=local
+#    SetEnvIf Host localhost:8004$ CI_ENV=local
+#
+#    SetEnvIf Host 192.168.99.100:8003$ CI_ENV=local
+#    SetEnvIf Host 192.168.99.100:8004$ CI_ENV=local
+#
+#    SetEnvIf Host 54.180.1.184$ CI_ENV=development
+#    SetEnvIf Host 54.180.1.184$ CI_ENV=development
+#
+#    SetEnvIf Host admin.premiuminvest.co.kr$ CI_ENV=production
+</IfModule>
