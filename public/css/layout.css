@@ -1,0 +1,13 @@
+.m-auto {
+    margin:auto;
+    float:unset !important;
+}
+#join-wrap {
+    margin-top:100px;
+}
+#join-wrap h3{
+    margin-bottom:50px;
+}
+#join-form {
+    margin:50px auto;
+}
