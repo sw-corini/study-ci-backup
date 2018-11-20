@@ -47,12 +47,12 @@ class Sign_up extends CI_Controller {
 		$this->form_validation->set_rules(
 			'user_phone', 
 			'전화번호', 
-			'trim|required', 
+			'trim|required|regex_match[/^[0-9]{11}$/]', 
 			array(
-				'required'      => '%s를 입력해주세요.'
+				'required'      => '%s를 입력해주세요.',
+				'regex_match'	=> '%s는 대시(-)없이 숫자로만 입력해주세요.'
 			)
 		);
-
 		if ($this->form_validation->run() == FALSE){
 			$this->load->view('sign_up/index');
 		}
