@@ -8,50 +8,31 @@ class Sign_up extends CI_Controller {
 	public function index(){
 		$this->load->helper('url');
 		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules(
 			'user_id', 
 			'아이디', 
-			'trim|required|min_length[4]|max_length[20]|is_unique[users.user_id]', 
-			array(
-				'required'      => '%s를 입력해주세요.',
-				'is_unique'     => '%s는 이미 사용중인 아이디 입니다.'
-			)
+			'trim|required|min_length[4]|max_length[20]|is_unique[users.user_id]'
 		);
 		$this->form_validation->set_rules(
 			'user_pwd', 
 			'비밀번호', 
-			'trim|required|min_length[4]|max_length[45]|md5', 
-			array(
-				'required'      => '%s를 입력해주세요.'
-			)
+			'trim|required|min_length[4]|max_length[45]|md5'
 		);
 		$this->form_validation->set_rules(
 			'user_pwd2', 
 			'비밀번호 확인', 
-			'trim|required|matches[user_pwd]|md5', 
-			array(
-				'required'      => '%s을 입력해주세요.',
-				'matches'      	=> '%s은 비밀번호와 일치해야 합니다.'
-			)
+			'trim|required|matches[user_pwd]|md5'
 		);
 		$this->form_validation->set_rules(
 			'user_name', 
 			'이름', 
-			'trim|required', 
-			array(
-				'required'      => '%s을 입력해주세요.'
-			)
+			'trim|required'
 		);
 		$this->form_validation->set_rules(
 			'user_phone', 
 			'전화번호', 
-			'trim|required|regex_match[/^[0-9]{11}$/]', 
-			array(
-				'required'      => '%s를 입력해주세요.',
-				'regex_match'	=> '%s는 대시(-)없이 숫자로만 입력해주세요.'
-			)
+			'trim|required|regex_match[/^[0-9]{11}$/]'
 		);
 		if ($this->form_validation->run() == FALSE){
 			$this->load->view('sign_up/index');
@@ -68,8 +49,6 @@ class Sign_up extends CI_Controller {
 				'user_name'		=>$this->input->post('user_name'),
 				'user_phone'	=>$this->input->post('user_phone')
 			));
-			$this->load->library('session');
-			$this->session->set_flashdata('user_name', $this->input->post('user_name'));
 			$this->load->view('sign_up/show');
 		}
 	}

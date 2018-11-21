@@ -21,7 +21,7 @@ class Model_users extends CI_Model {
 	}
 	// 등록 처리
 	public function store($arr){
-        $this->db->insert('users', $arr);
+                $this->db->insert('users', $arr);
 	}
 	// 수정 처리
 	public function update(){
